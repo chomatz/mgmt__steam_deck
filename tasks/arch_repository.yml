@@ -12,6 +12,8 @@
         cmd: "pacman-key --populate {{ item }}"
       with_items: "{{ steam_deck.repositories }}"
 
-  when: ansible_distribution == "Archlinux" 
+  when:
+    - ansible_distribution == "Archlinux"
+    - ansible_distribution_release == "holo"
 
 ...
