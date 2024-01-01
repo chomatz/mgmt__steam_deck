@@ -1,0 +1,12 @@
+---
+
+- name: ensure tasks run only on selected os releases
+  block:
+
+    - name: "{{ readonly_mode }} steamos filesystem protection"
+      ansible.builtin.command:
+        cmd: "steamos-readonly {{ readonly_mode }}"
+
+  when: ansible_distribution == "Archlinux"
+
+...
