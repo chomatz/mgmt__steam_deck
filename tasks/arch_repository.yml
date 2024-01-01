@@ -1,0 +1,17 @@
+---
+
+- name: ensure tasks run only on selected os releases
+  block:
+
+    - name: initialize pacman keyring
+      ansible.builtin.command:
+        cmd: pacman-key --init
+
+    - name: load default pacman key(s)
+      ansible.builtin.command:
+        cmd: "pacman-key --populate {{ item }}"
+      with_items: "{{ steam_deck.repositories }}"
+
+  when: ansible_distribution == "Archlinux" 
+
+...
