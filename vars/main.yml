@@ -1,2 +1,8 @@
 ---
-# vars file for mgmt__steam_deck
+
+steam_deck:
+  repositories:
+    - archlinux
+    - holo
+
+...
