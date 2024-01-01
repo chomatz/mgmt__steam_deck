@@ -14,8 +14,6 @@ readonly_mode: <disable|enable>
 
   tasks:
 
-    tasks:
-
     - name: disable steamos filesystem protection
       ansible.builtin.include_role:
         name: mgmt__steam_deck
