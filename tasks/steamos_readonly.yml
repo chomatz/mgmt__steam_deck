@@ -3,7 +3,18 @@
 - name: ensure tasks run only on selected os releases
   block:
 
-    - name: "{{ readonly_mode }} steamos filesystem protection"
+    - name: manage steamos filesystem mode
+      ansible.builtin.debug:
+        msg: |
+          -------------------------------------
+          {{ readonly_mode }} steamos filesystem protection
+          -------------------------------------
+        verbosity: 0
+      delegate_to: localhost
+      run_once: true
+
+    # readonly_mode must be either 'enable' or 'disable'
+    - name: "{{ readonly_mode }} read-only mode"
       ansible.builtin.command:
         cmd: "steamos-readonly {{ readonly_mode }}"
 

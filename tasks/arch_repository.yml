@@ -3,6 +3,16 @@
 - name: ensure tasks run only on selected os releases
   block:
 
+    - name: initialize pacman
+      ansible.builtin.debug:
+        msg: |
+          ----------------------------------------
+          initialize keyring and load default keys
+          ----------------------------------------
+        verbosity: 0
+      delegate_to: localhost
+      run_once: true
+
     - name: initialize pacman keyring
       ansible.builtin.command:
         cmd: pacman-key --init
