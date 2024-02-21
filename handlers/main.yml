@@ -1,0 +1,7 @@
+---
+
+- name: enable read-only mode
+  ansible.builtin.command:
+    cmd: steamos-readonly enable
+
+...
